@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: seclock
-          image: 457660516559.dkr.ecr.us-east-1.amazonaws.com/seclock:V1
+          image: 457660516559.dkr.ecr.us-east-1.amazonaws.com/seclock:8
           ports:
             - containerPort: 8080
