@@ -1,7 +1,7 @@
 pipeline{
     agent any
 
-    environment = {
+    environment {
         image_name = "seclock"
     }
 
@@ -42,6 +42,6 @@ pipeline{
                 ''' 
             }
         }
-        
+
     }
 }
