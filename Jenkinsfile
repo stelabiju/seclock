@@ -38,7 +38,7 @@ pipeline{
         stage ('Trivy Image Scan') {
             steps {
                 sh '''
-                docker run --rm aquasec/trivy:latest seclock:V1 
+                docker run --rm aquasec/trivy:latest image seclock:V1 
                 ''' 
             }
         }
