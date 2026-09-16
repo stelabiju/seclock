@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seclock
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: seclock
+  template:
+    metadata:
+      labels:
+        app: seclock
+    spec:
+      containers:
+        - name: seclock
+          image: 457660516559.dkr.ecr.us-east-1.amazonaws.com/seclock:V1
+          ports:
+            - containerPort: 8080
