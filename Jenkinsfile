@@ -93,25 +93,25 @@ pipeline {
             }
         }
 
-    }
-    stage('9. Commit & Push Manifest') {
-    steps {
-        withCredentials([usernamePassword(
-            credentialsId: 'Github_jenkins',
-            usernameVariable: 'GIT_USERNAME',
-            passwordVariable: 'GIT_PASSWORD'
-        )]) {
-            sh '''
-            git config user.name "$GIT_USERNAME"
-            git config user.email "jenkins@localhost"
+        stage('9. Commit & Push Manifest') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'Github_jenkins',
+                    usernameVariable: 'GIT_USERNAME',
+                    passwordVariable: 'GIT_PASSWORD'
+                )]) {
+                    sh '''
+                    git config user.name "$GIT_USERNAME"
+                    git config user.email "jenkins@localhost"
 
-            git add k8s/deployment.yaml
-            git commit -m "Update Seclock image to ${BUILD_NUMBER}" || true
+                    git add k8s/deployment.yaml
+                    git commit -m "Update Seclock image to ${BUILD_NUMBER}" || true
 
-            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/stelabiju/seclock.git HEAD:main
-            '''
+                    git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/stelabiju/seclock.git HEAD:main
+                    '''
+                }
+            }
         }
-      }
     }
 
     post {
