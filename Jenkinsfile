@@ -31,14 +31,14 @@ pipeline{
         stage ('Docker Build') {
             steps {
                 sh '''
-                docker build -t $IMAGE_NAME:V1 .
+                docker build -t seclock:V1 .
                 '''
             }
         }
         stage ('Trivy Image Scan') {
             steps {
                 sh '''
-                docker run --rm aquasec/trivy:latest $IMAGE_NAME:V1 
+                docker run --rm aquasec/trivy:latest seclock:V1 
                 ''' 
             }
         }
